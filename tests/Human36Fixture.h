@@ -58,6 +58,46 @@ struct Human36 {
     BodyNameLast
   };
 
+  enum DofNames {
+    PelvisTX,
+    PelvisTY,
+    PelvisTZ,
+    PelvisRY,
+    PelvisRX,
+    PelvisRZ,
+    HipRightRY,
+    HipRightRX,
+    HipRightRZ,
+    KneeRightRY,
+    AnkleRightRY,
+    AnkleRightRZ,
+    HipLeftRY,
+    HipLeftRX,
+    HipLeftRZ,
+    KneeLeftRY,
+    AnkleLeftRY,
+    AnkleLeftRZ,
+    LumbarRY,
+    LumbarRX,
+    LumbarRZ,
+    ShoulderRightRY,
+    ShoulderRightRX,
+    ShoulderRightRZ,
+    ElbowRightRY,
+    WristRightRY,
+    WristRightRZ,
+    ShoulderLeftRY,
+    ShoulderLeftRX,
+    ShoulderLeftRZ,
+    ElbowLeftRY,
+    WristLeftRY,
+    WristLeftRZ,
+    NeckRY,
+    NeckRX,
+    NeckRZ,
+    DofNameCount
+  };
+
   double SegmentLengths[SegmentNameLast];
   double SegmentMass[SegmentNameLast];
   double SegmentCOM[SegmentNameLast][3];
@@ -275,7 +315,7 @@ struct Human36 {
     unsigned int pelvis_trans = model_3dof->AddBody (0, Xtrans(Vector3d (0., 0., 0.)), trans_xyz, null_body, "pelvis_trans_xyz");
 
     body_id_3dof[BodyPelvis] = model_3dof->AddBody (pelvis_trans, Xtrans (Vector3d (0., 0., 0.)), rot_yxz_3dof, pelvis_body, "pelvis");
-//    body_id_3dof[BodyPelvis] = model_3dof->AddBody (0, Xtrans (Vector3d (0., 0., 0.)), free_flyer, pelvis_body, "pelvis");
+    //		body_id_3dof[BodyPelvis] = model_3dof->AddBody (0, Xtrans (Vector3d (0., 0., 0.)), free_flyer, pelvis_body, "pelvis");
 
     // right leg
     body_id_3dof[BodyThighRight] = model_3dof->AddBody (body_id_3dof[BodyPelvis], Xtrans(Vector3d(0., -0.0872, 0.)), rot_yxz_3dof, thigh_body, "thigh_r");

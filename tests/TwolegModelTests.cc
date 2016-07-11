@@ -240,7 +240,7 @@ void init_model (Model* model) {
   temp_id = model->AddBody (temp_id, Xtrans (joint_location[JointLocationAnkle]), joint_rot_z, foot_left_body);
   foot_left_id = temp_id;
 
-//  cerr << "--- model created (" << model->dof_count << " DOF) ---" << endl;
+  //	cerr << "--- model created (" << model->dof_count << " DOF) ---" << endl;
 
   // contact data
 
@@ -313,8 +313,8 @@ TEST ( TestForwardDynamicsConstrainedDirectFootmodel ) {
   ForwardDynamics (*model, Q, QDot, Tau, QDDot_aba);
   ForwardDynamicsLagrangian (*model, Q, QDot, Tau, QDDot_lag);
 
-//  cout << "QDDot_aba = " << QDDot_aba.transpose() << endl;
-//  cout << "QDDot_lag = " << QDDot_lag.transpose() << endl;
+  //	cout << "QDDot_aba = " << QDDot_aba.transpose() << endl;
+  //	cout << "QDDot_lag = " << QDDot_lag.transpose() << endl;
 
   unsigned int body_id = constraint_set_left.body[0];
   Vector3d contact_point = constraint_set_left.point[0];
@@ -322,15 +322,15 @@ TEST ( TestForwardDynamicsConstrainedDirectFootmodel ) {
   MatrixNd G (3, Q.size());
   CalcPointJacobian (*model, Q, body_id, contact_point, G, true);
 
-//  cout << G << endl;
+  //	cout << G << endl;
 
   ClearLogOutput();
 
   ForwardDynamicsConstrainedDirect (*model, Q, QDot, Tau, constraint_set_left, QDDot);
 
-//  cout << "C0: " << contact_data_left[0].body_id << ", " << contact_data_left[0].point.transpose() << endl;
-//  cout << "C1: " << contact_data_left[1].body_id << ", " << contact_data_left[1].point.transpose() << endl;
-//  cout << "td: " << foot_left_id << ", " << heel_point.transpose() << endl;
+  //	cout << "C0: " << contact_data_left[0].body_id << ", " << contact_data_left[0].point.transpose() << endl;
+  //	cout << "C1: " << contact_data_left[1].body_id << ", " << contact_data_left[1].point.transpose() << endl;
+  //	cout << "td: " << foot_left_id << ", " << heel_point.transpose() << endl;
 
   contact_force[0] = constraint_set_left.force[0];
   contact_force[1] = constraint_set_left.force[1];
@@ -338,11 +338,11 @@ TEST ( TestForwardDynamicsConstrainedDirectFootmodel ) {
   CHECK_EQUAL (body_id, foot_left_id);
   CHECK_EQUAL (contact_point, heel_point);
 
-//  cout << LogOutput.str() << endl;
+  //	cout << LogOutput.str() << endl;
   contact_accel_left = CalcPointAcceleration (*model, Q, QDot, QDDot, foot_left_id, heel_point);
   contact_vel_left = CalcPointVelocity (*model, Q, QDot, foot_left_id, heel_point);
-//  cout << contact_force << endl;
-//  cout << contact_accel_left << endl;
+  //	cout << contact_force << endl;
+  //	cout << contact_accel_left << endl;
 
   CHECK_ARRAY_CLOSE (Vector3d (0., 0., 0.).data(), contact_accel_left.data(), 3, TEST_PREC);
 

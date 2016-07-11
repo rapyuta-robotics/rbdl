@@ -226,7 +226,7 @@ TEST ( TestForwardDynamicsConstrainedDirectMoving ) {
   // cout << LogOutput.str() << endl;
   // cout << "LagrangianSimple Logoutput End" << endl;
 }
- 
+
 // 
 // ForwardDynamicsContacts
 // 

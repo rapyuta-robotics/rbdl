@@ -201,7 +201,7 @@ TEST_FIXTURE(ImpulsesFixture, TestContactImpulseRotatedCollisionVelocity) {
 }
 
 TEST_FIXTURE(ImpulsesFixture, TestContactImpulseRangeSpaceSparse) {
-Q[0] = 0.2;
+  Q[0] = 0.2;
   Q[1] = -0.5;
   Q[2] = 0.1;
   Q[3] = -0.4;
@@ -240,7 +240,7 @@ Q[0] = 0.2;
 }
 
 TEST_FIXTURE(ImpulsesFixture, TestContactImpulseNullSpace) {
-Q[0] = 0.2;
+  Q[0] = 0.2;
   Q[1] = -0.5;
   Q[2] = 0.1;
   Q[3] = -0.4;
