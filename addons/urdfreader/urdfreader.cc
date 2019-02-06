@@ -1,7 +1,5 @@
 #include <rbdl/rbdl.h>
-
 #include "urdfreader.h"
-
 #include <assert.h>
 #include <iostream>
 #include <fstream>
@@ -161,7 +159,8 @@ bool construct_model (Model* rbdl_model, ModelPtr urdf_model, bool floating_base
     // determine where to add the current joint and child body
     unsigned int rbdl_parent_id = 0;
 
-    if (urdf_parent->name != "base_link") {
+    if ((urdf_parent->name != "world") && (joint_names[j].find("base_joint") == std::string::npos)) { // base_joint appears in some URDF files coming from ROS, e.g. test_env_table_base_joint
+    // if (urdf_parent->name != "base_link") {
       rbdl_parent_id = rbdl_model->GetBodyId (urdf_parent->name.c_str());
     }
 
